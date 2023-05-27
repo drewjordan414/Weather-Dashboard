@@ -25,14 +25,25 @@
     <!-- search for city -->
     <div class="container my-4">
         <form id="city-search">
+            <label for="city-search" class="form-label">Search for a city</label>
             <input type="text" class="form-control" placeholder="Enter a city name">
+            <!-- add submit button -->
         </form>
     </div>
 
     <!-- city options underneath  -->
     <div class="container my-4">
         <ul class="list-group" id="city-list">
-            <!-- add major cities here-- they will need a click event -->
+            <label for="exampleDataList" class="form-label">Major Cities</label>
+            <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+            <datalist id="datalistOptions">
+                <option value="San Francisco">
+                <option value="New York">
+                <option value="Seattle">
+                <option value="Los Angeles">
+                <option value="Chicago">
+            </datalist>
+            <!-- add submit button -->
         </ul>
     </div>
     <!-- city weather data for that day to the top right -->
@@ -51,7 +62,7 @@
     <!-- 5 day forecast under the current weather -->
     <div class="container my-4">
         <div class="row" id="forecast">
-            <!-- add 5 cards here -->
+            <!-- add 4 cards here -->
 
         </div>
 
