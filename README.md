@@ -14,3 +14,10 @@ THEN I am presented with a 5-day forecast that displays the date, an icon repres
 WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 ```
+
+## TO DO 
+1. move the search bar and city select to the left side of the page
+2. add a button to clear the search history?
+3. move all of the weather data to the right side of the page
+4. show weather icons for the current weather and the 5 day forecast
+6. hide the weather until a city is selected

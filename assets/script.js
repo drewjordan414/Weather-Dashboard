@@ -25,30 +25,28 @@ citySearchForm.addEventListener("submit", function (event) {
 
     // 5 day forecast
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}&units=imperial`)
-    .then(response => response.json())
-    .then(data => {
-        forecast.innerHTML = "";
-        for (let i = 0; i < data.list.length; i += 8) {
-            const date = new Date(data.list[i].dt_txt);
-            const dateStr = date.toLocaleDateString();
-            const timeStr = date.toLocaleTimeString();
-            forecast.innerHTML += ` 
-            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-2">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>${dateStr}</h3>
-                        <p>${timeStr}</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Temperature: ${data.list[i].main.temp} F</li>
-                        <li class="list-group-item">Humidity: ${data.list[i].main.humidity} %</li>
-                        <li class="list-group-item">Wind Speed: ${data.list[i].wind.speed} mph</li>
-                    </ul>
-                </div>
+        .then(response => response.json())
+        .then(data => {
+            forecast.innerHTML = "";
+            for (let i = 0; i < data.list.length; i += 8) {
+                const date = new Date(data.list[i].dt_txt);
+                const dateStr = date.toLocaleDateString();
+                const timeStr = date.toLocaleTimeString();
+                forecast.innerHTML += ` 
+            <div class="card text-bg-dark mb-3">
+            <div class="card-header">${dateStr}</div>
+            <div class="card-body">
+                <h5 class="card-title">${timeStr}</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Temperature: ${data.list[i].main.temp} F</li>
+                    <li class="list-group-item">Humidity: ${data.list[i].main.humidity} %</li>
+                    <li class="list-group-item">Wind Speed: ${data.list[i].wind.speed} mph</li>
+                </ul>
             </div>
+        </div>
             `;
-        }
-    });
+            }
+        });
 });
 
 cityList.addEventListener("input", function (event) {

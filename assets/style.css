@@ -12,6 +12,7 @@ body{
     margin: auto;
     overflow: hidden; */
     max-width: 800px;
+
 }
 
 #city-search{
@@ -27,12 +28,16 @@ body{
     overflow-y: hidden;
 }
 
-.card{
-    padding: 20px;
-    margin-bottom: 20px;
+
+.card-group .card{
+    flex: 1 0 auto;
+    margin: 5px;
+    /* max-width: 18rem; */
+    background-color: #343a40;
+    color: white;
 }
 
-#forecast .card{
-    margin-right: 10px;
-    margin-left: 10px;
+.card-group .card .list-group-item{
+    background-color: #343a40;
+    color: white;
 }
