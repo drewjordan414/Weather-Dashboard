@@ -12,7 +12,7 @@ citySearchForm.addEventListener("submit", function (event) {
     event.preventDefault();
     const cityName = event.target[0].value;
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`)
     .then(response => response.json())
     .then(data => {
         weatherCard.innerHTML = `
@@ -23,7 +23,7 @@ citySearchForm.addEventListener("submit", function (event) {
         `;
     });
 
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}`)
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}&units=imperial`)
     .then(response => response.json())
     .then(data => {
         forecast.innerHTML = "";
