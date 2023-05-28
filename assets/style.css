@@ -18,9 +18,13 @@ body{
     margin-bottom: 20px;
 }
 
+.container button{
+    margin-top: 10px;
+}
+
 #city-list{
     max-height: 200px;
-    overflow-y: scroll;
+    overflow-y: hidden;
 }
 
 .card{
