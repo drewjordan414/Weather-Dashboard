@@ -17,9 +17,9 @@ citySearchForm.addEventListener("submit", function (event) {
     .then(data => {
         weatherCard.innerHTML = `
         <h2>${data.name}</h2>
-        <p>Temperature: ${data.main.temp}</p>
-        <p>Humidity: ${data.main.humidity}</p>
-        <p>Wind Speed: ${data.wind.speed}</p>
+        <p>Temperature: ${data.main.temp} F</p>
+        <p>Humidity: ${data.main.humidity} %</p>
+        <p>Wind Speed: ${data.wind.speed} mph</p>
         `;
     });
 
@@ -31,9 +31,9 @@ citySearchForm.addEventListener("submit", function (event) {
             forecast.innerHTML += `  
             <div class="card">
                 <h3>${data.list[i].dt_txt}</h3>
-                <p>Temperature: ${data.list[i].main.temp}</p>
-                <p>Humidity: ${data.list[i].main.humidity}</p>
-                <p>Wind Speed: ${data.list[i].wind.speed}</p>
+                <p>Temperature: ${data.list[i].main.temp} F</p>
+                <p>Humidity: ${data.list[i].main.humidity} %</p>
+                <p>Wind Speed: ${data.list[i].wind.speed} mph</p>
             </div>
             `;
         }
