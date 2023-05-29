@@ -7,12 +7,19 @@ var forecast = document.querySelector(".card-group");
 // API url and key
 const apiKey = "ce3d08cfda63c419bc1f505bd8fd502f";
 
+//hide weather data until search
+
+// Search history
+var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+
 // Event listener for search form
 citySearchForm.addEventListener("submit", function (event) {
     event.preventDefault();
-    //save search history
-    
     const cityName = event.target[0].value;
+
+    // add city to search history
+    searchHistory.push(cityName);
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
 
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`)
         .then(response => response.json())
@@ -61,6 +68,6 @@ cityList.addEventListener("input", function (event) {
 
 // clear search history
 document.getElementById("clear-history").addEventListener("click", function () {
-    localStorage.clear();
-    document.getElementById("history").innerHTML = "";
+    searchHistory = [];
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
 });
