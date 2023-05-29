@@ -49,11 +49,10 @@ citySearchForm.addEventListener("submit", function (event) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`)
         .then(response => response.json())
         .then(data => {
-            // const date = new Date(data.list[i].dt_txt);
-            // const dateStr = date.toLocaleDateString();
-            // const timeStr = date.toLocaleTimeString();
+            const iconCode = data.weather[0].icon;
+            const iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
             weatherCard.innerHTML = `
-        <h2>${data.name}</h2>
+        <h2>${data.name} <img src="${iconUrl}" alt="Weather icon"></h2>
         <p>Temperature: ${data.main.temp} F</p>
         <p>Humidity: ${data.main.humidity} %</p>
         <p>Wind Speed: ${data.wind.speed} mph</p>
@@ -67,11 +66,12 @@ citySearchForm.addEventListener("submit", function (event) {
             forecast.innerHTML = "";
             for (let i = 0; i < data.list.length; i += 8) {
                 const date = new Date(data.list[i].dt_txt);
-                const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' }); // This will return the day of the week like 'Monday'
-
+                const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' }); 
+                const iconCode = data.list[i].weather[0].icon;
+                const iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
                 forecast.innerHTML += ` 
         <div class="card text-bg-dark mb-3">
-        <div class="card-header">${dayOfWeek}</div>
+        <div class="card-header">${dayOfWeek} <img src="${iconUrl}" alt="Weather icon"></div>
         <div class="card-body">
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">Temperature: ${data.list[i].main.temp} F</li>
