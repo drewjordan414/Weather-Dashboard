@@ -17,6 +17,9 @@ citySearchForm.addEventListener("submit", function (event) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`)
         .then(response => response.json())
         .then(data => {
+            // const date = new Date(data.list[i].dt_txt);
+            // const dateStr = date.toLocaleDateString();
+            // const timeStr = date.toLocaleTimeString();
             weatherCard.innerHTML = `
         <h2>${data.name}</h2>
         <p>Temperature: ${data.main.temp} F</p>
