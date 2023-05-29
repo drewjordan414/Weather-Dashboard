@@ -46,7 +46,7 @@ body{
 }
 
 
-#city-buttons{
-    margin-top: 10px;
-    padding: 40px;
+#city-buttons .btn{
+    margin: 10px;
+    /* padding: 40px; */
 }
