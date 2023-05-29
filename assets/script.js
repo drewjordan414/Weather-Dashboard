@@ -1,6 +1,6 @@
 // Housekeeping
 var citySearchForm = document.getElementById("city-search");
-var cityList = document.getElementById("datalistOptions");
+var cityButtons = document.getElementById("city-buttons");
 var weatherCard = document.querySelector(".card");
 var forecast = document.querySelector(".card-group");
 
@@ -12,6 +12,20 @@ const apiKey = "ce3d08cfda63c419bc1f505bd8fd502f";
 // Search history
 var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
 
+// add search history to buttons
+searchHistory.forEach(function(cityName){ 
+    let button = document.createElement("button");
+    button.className = "btn btn-primary";
+    button.textContent = cityName;
+    button.addEventListener("click", function(){
+        citySearchForm[0].value = this.textContent;
+        citySearchForm.dispatchEvent(new Event("submit"));
+    });
+    cityButtons.appendChild(button);
+
+});
+
+
 // Event listener for search form
 citySearchForm.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -22,10 +36,15 @@ citySearchForm.addEventListener("submit", function (event) {
         searchHistory.push(cityName);
         localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
         
-        let newCityOption = document.createElement("option");
-        newCityOption.value = cityName;
-        cityList.appendChild(newCityOption);
-    }
+        let newCityButton = document.createElement("button");
+        newCityButton.className = "btn btn-primary";
+        newCityButton.textContent = cityName;
+        newCityButton.addEventListener("click", function(){
+            citySearchForm[0].value = this.textContent;
+            citySearchForm.dispatchEvent(new Event("submit"));
+        });
+        cityButtons.appendChild(newCityButton);
+    };
 
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`)
         .then(response => response.json())
@@ -67,7 +86,7 @@ citySearchForm.addEventListener("submit", function (event) {
         });
 });
 
-cityList.addEventListener("input", function (event) {
+cityButtons.addEventListener("input", function (event) {
     citySearchForm[0].value = event.target.value;
     citySearchForm.dispatchEvent(new Event("submit"));
 });
@@ -77,7 +96,7 @@ document.getElementById("clear-history").addEventListener("click", function () {
     searchHistory = [];
     localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
 
-    while(cityList.firstChild){
-        cityList.removeChild(cityList.firstChild);
+    while(cityButtons.firstChild){
+        cityButtons.removeChild(cityButtons.firstChild);
     }
 });
