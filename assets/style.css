@@ -44,3 +44,9 @@ body{
     color: white;
     margin-right: 5px;
 }
+
+
+#city-buttons{
+    margin-top: 10px;
+    padding: 40px;
+}
