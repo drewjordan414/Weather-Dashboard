@@ -21,9 +21,9 @@ citySearchForm.addEventListener("submit", function (event) {
     if (!searchHistory.includes(cityName)) {
         searchHistory.push(cityName);
         localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-
-
+        
         let newCityOption = document.createElement("option");
+        newCityOption.value = cityName;
         cityList.appendChild(newCityOption);
     }
 
