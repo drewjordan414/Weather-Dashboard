@@ -52,7 +52,7 @@ citySearchForm.addEventListener("submit", function (event) {
             const iconCode = data.weather[0].icon;
             const iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
             weatherCard.innerHTML = `
-        <h2>${data.name} <img src="${iconUrl}" alt="Weather icon"></h2>
+        <h2>${data.name}, ${data.sys.country}<img src="${iconUrl}" alt="Weather icon"></h2>
         <p>Temperature: ${data.main.temp} F</p>
         <p>Humidity: ${data.main.humidity} %</p>
         <p>Wind Speed: ${data.wind.speed} mph</p>
