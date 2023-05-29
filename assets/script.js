@@ -13,11 +13,11 @@ const apiKey = "ce3d08cfda63c419bc1f505bd8fd502f";
 var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
 
 // add search history to buttons
-searchHistory.forEach(function(cityName){ 
+searchHistory.forEach(function (cityName) {
     let button = document.createElement("button");
     button.className = "btn btn-primary";
     button.textContent = cityName;
-    button.addEventListener("click", function(){
+    button.addEventListener("click", function () {
         citySearchForm[0].value = this.textContent;
         citySearchForm.dispatchEvent(new Event("submit"));
     });
@@ -35,11 +35,11 @@ citySearchForm.addEventListener("submit", function (event) {
     if (!searchHistory.includes(cityName)) {
         searchHistory.push(cityName);
         localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-        
+
         let newCityButton = document.createElement("button");
         newCityButton.className = "btn btn-primary";
         newCityButton.textContent = cityName;
-        newCityButton.addEventListener("click", function(){
+        newCityButton.addEventListener("click", function () {
             citySearchForm[0].value = this.textContent;
             citySearchForm.dispatchEvent(new Event("submit"));
         });
@@ -67,21 +67,20 @@ citySearchForm.addEventListener("submit", function (event) {
             forecast.innerHTML = "";
             for (let i = 0; i < data.list.length; i += 8) {
                 const date = new Date(data.list[i].dt_txt);
-                const dateStr = date.toLocaleDateString();
-                const timeStr = date.toLocaleTimeString();
+                const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'long' }); // This will return the day of the week like 'Monday'
+
                 forecast.innerHTML += ` 
-            <div class="card text-bg-dark mb-3">
-            <div class="card-header">${dateStr}</div>
-            <div class="card-body">
-                <h5 class="card-title">${timeStr}</h5>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Temperature: ${data.list[i].main.temp} F</li>
-                    <li class="list-group-item">Humidity: ${data.list[i].main.humidity} %</li>
-                    <li class="list-group-item">Wind Speed: ${data.list[i].wind.speed} mph</li>
-                </ul>
-            </div>
+        <div class="card text-bg-dark mb-3">
+        <div class="card-header">${dayOfWeek}</div>
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Temperature: ${data.list[i].main.temp} F</li>
+                <li class="list-group-item">Humidity: ${data.list[i].main.humidity} %</li>
+                <li class="list-group-item">Wind Speed: ${data.list[i].wind.speed} mph</li>
+            </ul>
         </div>
-            `;
+    </div>
+        `;
             }
         });
 });
@@ -96,7 +95,7 @@ document.getElementById("clear-history").addEventListener("click", function () {
     searchHistory = [];
     localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
 
-    while(cityButtons.firstChild){
+    while (cityButtons.firstChild) {
         cityButtons.removeChild(cityButtons.firstChild);
     }
 });
