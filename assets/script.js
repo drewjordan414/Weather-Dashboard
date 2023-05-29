@@ -18,8 +18,14 @@ citySearchForm.addEventListener("submit", function (event) {
     const cityName = event.target[0].value;
 
     // add city to search history
-    searchHistory.push(cityName);
-    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+    if (!searchHistory.includes(cityName)) {
+        searchHistory.push(cityName);
+        localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+
+
+        let newCityOption = document.createElement("option");
+        cityList.appendChild(newCityOption);
+    }
 
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`)
         .then(response => response.json())
@@ -70,4 +76,8 @@ cityList.addEventListener("input", function (event) {
 document.getElementById("clear-history").addEventListener("click", function () {
     searchHistory = [];
     localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+
+    while(cityList.firstChild){
+        cityList.removeChild(cityList.firstChild);
+    }
 });
