@@ -27,6 +27,7 @@ body{
 #city-list{
     max-height: 200px;
     overflow-y: hidden;
+    border: none;
 }
 
 
@@ -43,10 +44,15 @@ body{
     background-color: #343a40;
     color: white;
     margin-right: 5px;
+    border: none;
 }
 
 
 #city-buttons .btn{
     margin: 10px;
     /* padding: 40px; */
+}
+
+.card, .card-body, .card-title, .card-text{
+    border: none;
 }
