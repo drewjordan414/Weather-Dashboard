@@ -12,6 +12,7 @@ body{
     margin: auto;
     overflow: hidden; */
     max-width: 800px;
+    margin: 0;
 
 }
 
@@ -32,6 +33,7 @@ body{
 .card-group .card{
     flex: 1 0 auto;
     margin: 5px;
+    margin-right: 5px ;
     /* max-width: 18rem; */
     background-color: #343a40;
     color: white;
@@ -40,4 +42,5 @@ body{
 .card-group .card .list-group-item{
     background-color: #343a40;
     color: white;
+    margin-right: 5px;
 }

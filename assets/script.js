@@ -10,6 +10,8 @@ const apiKey = "ce3d08cfda63c419bc1f505bd8fd502f";
 // Event listener for search form
 citySearchForm.addEventListener("submit", function (event) {
     event.preventDefault();
+    //save search history
+    
     const cityName = event.target[0].value;
 
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=imperial`)
@@ -52,4 +54,10 @@ citySearchForm.addEventListener("submit", function (event) {
 cityList.addEventListener("input", function (event) {
     citySearchForm[0].value = event.target.value;
     citySearchForm.dispatchEvent(new Event("submit"));
+});
+
+// clear search history
+document.getElementById("clear-history").addEventListener("click", function () {
+    localStorage.clear();
+    document.getElementById("history").innerHTML = "";
 });
