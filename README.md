@@ -23,5 +23,9 @@ THEN I am again presented with current and future conditions for that city
 6. hide the weather until a city is selected
 
 
+## Screenshot
+![Screenshot](./assets/images/screenshot.png)
+
+
 ## Live Application
 https://drewjordan414.github.io/Weather-Dashboard/
