@@ -1,8 +1,8 @@
 // Housekeeping
-var citySearchForm = document.getElementById("city-search");
-var cityButtons = document.getElementById("city-buttons");
-var weatherCard = document.querySelector(".card");
-var forecast = document.querySelector(".card-group");
+const citySearchForm = document.getElementById("city-search");
+const cityButtons = document.getElementById("city-buttons");
+const weatherCard = document.querySelector(".card");
+const forecast = document.querySelector(".card-group");
 
 // API url and key
 const apiKey = "ce3d08cfda63c419bc1f505bd8fd502f";
@@ -10,7 +10,7 @@ const apiKey = "ce3d08cfda63c419bc1f505bd8fd502f";
 //hide weather data until search
 
 // Search history
-var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+const searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
 
 // add search history to buttons
 searchHistory.forEach(function (cityName) {
